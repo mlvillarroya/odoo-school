@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+from dateutil.relativedelta import *
+from datetime import date
 
 class student(models.Model):
      _name = 'school.student'
@@ -14,13 +15,13 @@ class student(models.Model):
      active = fields.Boolean('Active', default=True,
                              help="Is the student currently part of the class?")
      age = fields.Integer('Age', compute = '_age_compute')
-     class_id = fields.Many2one('school.class')
-
+     class_id = fields.Many2one('school.school_class')
 
      @api.depends('birthdate')
      def _age_compute(self):
+         today = date.today()
          for record in self:
-             pass
+             record.age = relativedelta(today, record.birthdate).years
 
 class school_class(models.Model):
     _name = 'school.school_class'

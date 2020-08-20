@@ -56,6 +56,52 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- CLASS STUDENT -->
+    <!-- TREE VIEW -->
+    <record model="ir.ui.view" id="school.student_list">
+      <field name="name">Student list</field>
+      <field name="model">school.student</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="last_name"/>
+          <field name="id_number"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record model="ir.ui.view" id="school.student_form">
+      <field name="name">Student form</field>
+      <field name="model">school.student</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <field name="active" invisible="1"/>
+            <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+            <group>
+              <group>
+                <field name="name" />
+                <field name="last_name" />
+                <field name="id_number" />
+              </group>
+              <group>
+                <field name="birthdate" />
+                <field name="age" />
+                <field name="class_id" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- ACTION -->
+    <record model="ir.actions.act_window" id="school.student_action_window">
+      <field name="name">Class window</field>
+      <field name="res_model">school.student</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Top menu item -->
 
@@ -68,7 +114,7 @@
 
     <!-- actions -->
 
-    <menuitem name="Classes" id="school.menu_1_list" parent="school.menu_1"
+    <menuitem name="Classes" id="school.menu_2_list" parent="school.menu_2"
               action="school.school_class_action_window"/>
 
   </data>
