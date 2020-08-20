@@ -105,7 +105,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="school" id="school.menu_root"/>
+    <menuitem name="School" id="school.menu_root"/>
 
     <!-- menu categories -->
 
