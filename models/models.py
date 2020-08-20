@@ -16,6 +16,7 @@ class student(models.Model):
                              help="Is the student currently part of the class?")
      age = fields.Integer('Age', compute = '_age_compute')
      class_id = fields.Many2one('school.school_class')
+     event_ids = fields.Many2many('school.event', string="Events")
 
      @api.depends('birthdate')
      def _age_compute(self):
@@ -34,3 +35,13 @@ class school_class(models.Model):
     student_ids = fields.One2many('school.student','class_id',string='Students')
     student_number = fields.Integer('Student number')
     description = fields.Text('Description')
+
+class event(models.Model):
+    _name = 'school.event'
+
+    type = fields.Selection([('absence','Absence'),('delay','Delay'),('felicitation','Felicitation'),('behavior','Behavior')], default='absence')
+    class_id = fields.Many2one('school.school_class','Class')
+    datetime_begin = fields.Datetime('Datetime', default=fields.datetime.now())
+    student_ids = fields.Many2many('school.student', string='Students')
+    description = fields.Text('Description')
+    teacher_id = fields.Many2one('hr.employee',string="Teacher")

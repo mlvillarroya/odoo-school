@@ -103,19 +103,71 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- CLASS EVENT -->
+    <!-- TREE VIEW -->
+    <record model="ir.ui.view" id="school.event_list">
+      <field name="name">Event list</field>
+      <field name="model">school.event</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="class_id"/>
+          <field name="datetime_begin"/>
+          <field name="type"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record model="ir.ui.view" id="school.event_form">
+      <field name="name">Event form</field>
+      <field name="model">school.event</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="type" />
+                <field name="datetime_begin" />
+              </group>
+              <group>
+                <field name="class_id" />
+                <field name="teacher_id" />
+              </group>
+            </group>
+            <group>
+              <field name="description"/>
+            </group>
+            <group>
+              <field name="student_ids"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- ACTION -->
+    <record model="ir.actions.act_window" id="school.event_action_window">
+      <field name="name">Event window</field>
+      <field name="res_model">school.event</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    
     <!-- Top menu item -->
 
-    <menuitem name="School" id="school.menu_root"/>
+    <menuitem name="School" id="school.menu_root" web_icon="school,static/description/icon.png"/>
 
     <!-- menu categories -->
 
-    <menuitem name="Students" id="school.menu_1" parent="school.menu_root"/>
-    <menuitem name="Config" id="school.menu_2" parent="school.menu_root"/>
+    <menuitem name="Events" id="school.menu_events" parent="school.menu_root" action="school.event_action_window"/>
+    <menuitem name="Config" id="school.menu_config" parent="school.menu_root"/>
 
     <!-- actions -->
 
-    <menuitem name="Classes" id="school.menu_2_list" parent="school.menu_2"
+    <menuitem name="Classes" id="school.menu_config_classes" parent="school.menu_config"
               action="school.school_class_action_window"/>
+    <menuitem name="Students" id="school.menu_config_students" parent="school.menu_config"
+              action="school.student_action_window"/>
 
   </data>
 </odoo>
