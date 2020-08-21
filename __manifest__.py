@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/hr.xml',
+        'report/event_report.xml',
 
     ],
     # only loaded in demonstration mode
