@@ -69,21 +69,21 @@
         <record id="student_2" model="school.student">
             <field name="name">Blai</field>
             <field name="last_name">Cognom</field>
-            <field name="id_number">123123123A</field>
+            <field name="id_number">123123123B</field>
             <field name="birthdate">2007-06-09</field>
             <field name="class_id" ref="class_1" />
           </record>
         <record id="student_3" model="school.student">
             <field name="name">Pol</field>
             <field name="last_name">Cognom</field>
-            <field name="id_number">123123123A</field>
+            <field name="id_number">123123123C</field>
             <field name="birthdate">2007-05-15</field>
             <field name="class_id" ref="class_1" />
         </record>
         <record id="student_4" model="school.student">
             <field name="name">Ruth</field>
             <field name="last_name">Cognom</field>
-            <field name="id_number">123123123A</field>
+            <field name="id_number">123123123D</field>
             <field name="birthdate">2007-10-01</field>
             <field name="class_id" ref="class_1" />
         </record>
@@ -91,28 +91,28 @@
         <record id="student_5" model="school.student">
             <field name="name">Jan</field>
             <field name="last_name">Cognom</field>
-            <field name="id_number">123123123A</field>
+            <field name="id_number">123123123E</field>
             <field name="birthdate">2007-09-01</field>
             <field name="class_id" ref="class_2" />
         </record>
         <record id="student_6" model="school.student">
             <field name="name">Ona</field>
             <field name="last_name">Cognom</field>
-            <field name="id_number">123123123A</field>
+            <field name="id_number">123123123F</field>
             <field name="birthdate">2007-06-09</field>
             <field name="class_id" ref="class_2" />
           </record>
         <record id="student_7" model="school.student">
             <field name="name">Mel</field>
             <field name="last_name">Cognom</field>
-            <field name="id_number">123123123A</field>
+            <field name="id_number">123123123G</field>
             <field name="birthdate">2007-05-15</field>
             <field name="class_id" ref="class_2" />
         </record>
         <record id="student_8" model="school.student">
             <field name="name">Berto</field>
             <field name="last_name">Cognom</field>
-            <field name="id_number">123123123A</field>
+            <field name="id_number">123123123H</field>
             <field name="birthdate">2007-10-01</field>
             <field name="class_id" ref="class_2" />
         </record>

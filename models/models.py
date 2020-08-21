@@ -18,6 +18,8 @@ class student(models.Model):
      class_id = fields.Many2one('school.school_class')
      event_ids = fields.Many2many('school.event', string="Events")
 
+     _sql_constraints = [('id_number_uniq', 'unique (id_number)', "Student ID already exists !")]
+
      @api.depends('birthdate')
      def _age_compute(self):
          today = date.today()
@@ -38,6 +40,7 @@ class school_class(models.Model):
 
 class event(models.Model):
     _name = 'school.event'
+    _order = 'datetime_begin'
 
     type = fields.Selection([('absence','Absence'),('delay','Delay'),('felicitation','Felicitation'),('behavior','Behavior')], default='absence')
     class_id = fields.Many2one('school.school_class','Class')
@@ -45,3 +48,10 @@ class event(models.Model):
     student_ids = fields.Many2many('school.student', string='Students')
     description = fields.Text('Description')
     teacher_id = fields.Many2one('hr.employee',string="Teacher")
+
+    def name_get(self):
+        result = []
+        for record in self:
+            name = '(' + record.class_id.name + ') ' + record.type
+            result.append((record.id, name))
+        return result

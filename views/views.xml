@@ -91,6 +91,9 @@
                 <field name="class_id" />
               </group>
             </group>
+            <group>
+              <field name="event_ids"/>
+            </group>
           </sheet>
         </form>
       </field>
@@ -145,11 +148,43 @@
       </field>
     </record>
 
+    <!-- Search view -->
+    <record id="school.event_search_view"  model="ir.ui.view">
+      <field name="model">school.event</field>
+      <field name="arch" type="xml">
+        <search>
+            <field name="datetime_begin"/>
+            <field name="class_id"/>
+            <field name="type" widget="selection"/>
+            <group string="Group By">
+            <filter name="group_by_class" string="Class" context="{'group_by': 'class_id'}"/>
+            <filter name="group_by_type" string="Type" context="{'group_by': 'type'}"/>
+            </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- calendar view -->
+    <record model="ir.ui.view" id="school.event_calendar">
+        <field name="name">Event Calendar</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <calendar string="Event Calendar" date_start="datetime_begin" color="type" mode="week">
+                <field name="class_id"/>
+                <field name="type"/>
+                <field name="description"/>
+            </calendar>
+        </field>
+    </record>
+
+
     <!-- ACTION -->
     <record model="ir.actions.act_window" id="school.event_action_window">
       <field name="name">Event window</field>
       <field name="res_model">school.event</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="context">{'search_default_group_by_class': True, 'search_default_group_by_type': True}</field>
+
     </record>
     
     
